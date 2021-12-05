@@ -1,0 +1,27 @@
+import {normalizereconfig} from 'next/dist/server/config-shared'
+import React,{useState} from 'react'
+import style from 'CreateScreen.module.css'
+export default function CreateScreen() {
+    const [name,setname]=useState('')
+    const [species,setspecies]=useState('')
+    const [description,setdescription]=setState('')
+    const [location,setlocation]=useState('')
+
+    async function submitHandler(e){
+        e.preventDefault()
+        const res=await fetch('http://localhost:3001/animals',{
+            method:'POST',
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body:JSON.stringify({
+                name:name,
+                species:species,
+                description:description,
+                location:location,
+                img:'/image/adib.jpg'
+                
+            })
+        })
+    } 
+}
